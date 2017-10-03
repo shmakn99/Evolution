@@ -1,0 +1,111 @@
+class tril:
+
+	def __init__(self):
+		self.r_gene=['' for x in range(2)]
+		self.g_gene=['' for x in range(2)]
+		self.b_gene=['' for x in range(2)]
+		self.d_gene=['' for x in range(2)]
+		self.color=(0,0,0)
+		self.angles=(0,0,0)
+
+	def translate(self,gene):
+		prtn=''
+		code ='''AAA T
+			 AAB T
+			AAC T
+			ABA T
+			ABB T
+			ABC S
+			ACA X
+			ACB X
+			ACC X
+			BAA H
+			BAB H
+			BAC H
+			BBA H
+			BBB H
+			BBC H
+			BCA H
+			BCB H
+			BCC H
+			CAA P
+			CAB P
+			CAC P
+			CBA Q
+			CBB Q
+			CBC Q
+			CCA R
+			CCB R
+			CCC R'''
+
+		cd=code.split()
+		codon = [cd[i] for i in range(len(cd)) if i%2==0]
+		aa = [cd[i] for i in range(len(cd)) if i%2==1]
+		codon_table=dict(zip(codon,aa))
+
+		f=0
+
+		for i in range(len(gene)):
+			if gene[i:i+3]=='ABC':
+				f=i
+				break
+
+		i=f
+
+		while (True):
+			if len(gene[i:i+3])<3 or i>len(gene):
+				break
+
+			prtn+=codon_table[(gene[i:i+3])]
+			i+=3
+
+		return (prtn)
+
+	def ch_func(self,prtn):
+		ch=0
+		for aa in prtn:
+			if aa=='H':
+				ch+=1
+
+		return int(255*(ch/len(prtn)))
+
+	def d_func(self,prtn):
+		p,q,r,s=0,0,0,0
+
+		for aa in prtn:
+			if aa=='P': p+=1
+			if aa=='Q': q+=1
+			if aa=='R': r+=1
+
+		s=p+q+r 
+
+		if (s==0):
+			return (60,60,60)
+		else:
+			return (180*(p/s),180*(q/s),180*(r/s))
+
+
+	def pheno(self):
+		import random as rd  
+
+		r_prtn=self.translate(self.r_gene[rd.randint(0, 1)])
+		g_prtn=self.translate(self.g_gene[rd.randint(0, 1)])
+		b_prtn=self.translate(self.b_gene[rd.randint(0, 1)])
+
+		d_prtn=self.translate(self.d_gene[rd.randint(0, 1)])
+
+		r_phen=self.ch_func(r_prtn)
+		g_phen=self.ch_func(g_prtn)
+		b_phen=self.ch_func(b_prtn)
+
+		self.angles=d_phen=self.d_func(d_prtn)
+
+		self.color=color=(r_phen,g_phen,b_phen)
+
+
+	def geno(self):
+		for  i in range(2):
+			print (self.r_gene[i])
+			print (self.g_gene[i])
+			print (self.b_gene[i])
+			print (self.d_gene[i])
