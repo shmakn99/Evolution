@@ -178,23 +178,23 @@ generated randomly [The probability of occurrence of each base being 1/3].
 
 
 
-def genesis():
-	import random
+	def genesis():
+		import random
 
-	proto=tril()
-
-
-	cn={1:'A',2:'B',3:'C'}
-
-	for j in range(2):
-		for i in range(200):
-			proto.r_gene[j]+=cn[(random.randint(1, 3))]
-			proto.g_gene[j]+=cn[(random.randint(1, 3))]
-			proto.b_gene[j]+=cn[(random.randint(1, 3))]
-			proto.d_gene[j]+=cn[(random.randint(1, 3))]
+		proto=tril()
 
 
-	return (proto)
+		cn={1:'A',2:'B',3:'C'}
+
+		for j in range(2):
+			for i in range(200):
+				proto.r_gene[j]+=cn[(random.randint(1, 3))]
+				proto.g_gene[j]+=cn[(random.randint(1, 3))]
+				proto.b_gene[j]+=cn[(random.randint(1, 3))]
+				proto.d_gene[j]+=cn[(random.randint(1, 3))]
+
+
+		return (proto)
 	
 	
 Each gene is composed of 2 strings. One inherited from Parent 1 and another from Parent 2.
@@ -204,125 +204,125 @@ The new Gene String 1 = Gene1 of Parent 1 [ : k] + Gene2 of Parent 1 [k : ]
 The new Gene String 2 = Gene1 of Parent 2 [ : k] + Gene2 of Parent 2 [k : ]
 
 
-def schwifty(sam,martha,n):
-	import random
+	def schwifty(sam,martha,n):
+		import random
 
-	k1,k2,l1,l2=0,0,0,0
+		k1,k2,l1,l2=0,0,0,0
 
-	batman=[tril() for x in range(n)]
+		batman=[tril() for x in range(n)]
 
-	for i in range(n):
-		k1=random.randint(0, len(sam.r_gene[0]))
-		l1=random.randint(0, 1)
-		l2=random.randint(0, 1)
-		batman[i].r_gene[l2]=sam.r_gene[l1][:k1]+sam.r_gene[1-l1][k1:]
-		k2=random.randint(0, len(martha.r_gene[0]))
-		l1=random.randint(0, 1)
-		batman[i].r_gene[1-l2]=martha.r_gene[l1][:k2]+martha.r_gene[1-l1][k2:]
+		for i in range(n):
+			k1=random.randint(0, len(sam.r_gene[0]))
+			l1=random.randint(0, 1)
+			l2=random.randint(0, 1)
+			batman[i].r_gene[l2]=sam.r_gene[l1][:k1]+sam.r_gene[1-l1][k1:]
+			k2=random.randint(0, len(martha.r_gene[0]))
+			l1=random.randint(0, 1)
+			batman[i].r_gene[1-l2]=martha.r_gene[l1][:k2]+martha.r_gene[1-l1][k2:]
 
-		k1=random.randint(0, len(sam.g_gene[0]))
-		l1=random.randint(0, 1)
-		l2=random.randint(0, 1)
-		batman[i].g_gene[l2]=sam.g_gene[l1][:k1]+sam.g_gene[1-l1][k1:]
-		k2=random.randint(0, len(martha.g_gene[0]))
-		l1=random.randint(0, 1)
-		batman[i].g_gene[1-l2]=martha.g_gene[l1][:k2]+martha.g_gene[1-l1][k2:]
+			k1=random.randint(0, len(sam.g_gene[0]))
+			l1=random.randint(0, 1)
+			l2=random.randint(0, 1)
+			batman[i].g_gene[l2]=sam.g_gene[l1][:k1]+sam.g_gene[1-l1][k1:]
+			k2=random.randint(0, len(martha.g_gene[0]))
+			l1=random.randint(0, 1)
+			batman[i].g_gene[1-l2]=martha.g_gene[l1][:k2]+martha.g_gene[1-l1][k2:]	
 
-		k1=random.randint(0, len(sam.b_gene[0]))
-		l1=random.randint(0, 1)
-		l2=random.randint(0, 1)
-		batman[i].b_gene[l2]=sam.b_gene[l1][:k1]+sam.b_gene[1-l1][k1:]
-		k2=random.randint(0, len(martha.b_gene[0]))
-		l1=random.randint(0, 1)
-		batman[i].b_gene[1-l2]=martha.b_gene[l1][:k2]+martha.b_gene[1-l1][k2:]
+			k1=random.randint(0, len(sam.b_gene[0]))
+			l1=random.randint(0, 1)
+			l2=random.randint(0, 1)
+			batman[i].b_gene[l2]=sam.b_gene[l1][:k1]+sam.b_gene[1-l1][k1:]
+			k2=random.randint(0, len(martha.b_gene[0]))
+			l1=random.randint(0, 1)
+			batman[i].b_gene[1-l2]=martha.b_gene[l1][:k2]+martha.b_gene[1-l1][k2:]
 
-		k1=random.randint(0, len(sam.d_gene[0]))
-		l1=random.randint(0, 1)
-		l2=random.randint(0, 1)
-		batman[i].d_gene[l2]=sam.d_gene[l1][:k1]+sam.d_gene[1-l1][k1:]
-		k2=random.randint(0, len(martha.d_gene[0]))
-		l1=random.randint(0, 1)
-		batman[i].d_gene[1-l2]=martha.d_gene[l1][:k2]+martha.d_gene[1-l1][k2:]
+			k1=random.randint(0, len(sam.d_gene[0]))
+			l1=random.randint(0, 1)
+			l2=random.randint(0, 1)
+			batman[i].d_gene[l2]=sam.d_gene[l1][:k1]+sam.d_gene[1-l1][k1:]
+			k2=random.randint(0, len(martha.d_gene[0]))
+			l1=random.randint(0, 1)
+			batman[i].d_gene[1-l2]=martha.d_gene[l1][:k2]+martha.d_gene[1-l1][k2:]
 
-	return batman
+		return batman
 
-def fitness(sam):
-	dev=0
+	def fitness(sam):
+		dev=0
 
-	c=(130,45,198)
+		c=(130,45,198)
 
-	for i in range(3):
-		dev+=abs(sam.color[i]-c[i])
+		for i in range(3):
+			dev+=abs(sam.color[i]-c[i])
 
-	return	dev
+		return	dev
 
 
 During mutation, every Nth [Mutagen Factor] base is replaced with another base which is
 generated at random [The probability of occurrence of each base being 1/3].
 
 
-def mutate(sam):
-	import random
+	def mutate(sam):
+		import random
 
-	cn={1:'A',2:'B',3:'C'}
+		cn={1:'A',2:'B',3:'C'}
 
-	Mutagen_Number=n=4
+		Mutagen_Number=n=4
 
-	musam=tril()
+		musam=tril()
 
-	for j in range(2):
-		for char in sam.r_gene[j]:
-			if random.randint(1,n)==n//2:
-				musam.r_gene[j]+=cn[random.randint(1,3)]
-			else:
-				musam.r_gene[j]+=char
+		for j in range(2):
+			for char in sam.r_gene[j]:
+				if random.randint(1,n)==n//2:
+					musam.r_gene[j]+=cn[random.randint(1,3)]
+				else:
+					musam.r_gene[j]+=char
 
-		for char in sam.g_gene[j]:
-			if random.randint(1,n)==n//2:
-				musam.g_gene[j]+=cn[random.randint(1,3)]
-			else:
-				musam.g_gene[j]+=char
+			for char in sam.g_gene[j]:
+				if random.randint(1,n)==n//2:
+					musam.g_gene[j]+=cn[random.randint(1,3)]
+				else:
+					musam.g_gene[j]+=char
 
-		for char in sam.b_gene[j]:
-			if random.randint(1,n)==n//2:
-				musam.b_gene[j]+=cn[random.randint(1,3)]
-			else:
-				musam.b_gene[j]+=char
+			for char in sam.b_gene[j]:
+				if random.randint(1,n)==n//2:
+					musam.b_gene[j]+=cn[random.randint(1,3)]
+				else:
+					musam.b_gene[j]+=char
 
-		for char in sam.d_gene[j]:
-			if random.randint(1,n)==n//2:
-				musam.d_gene[j]+=cn[random.randint(1,3)]
-			else:
-				musam.d_gene[j]+=char
+			for char in sam.d_gene[j]:
+				if random.randint(1,n)==n//2:
+					musam.d_gene[j]+=cn[random.randint(1,3)]
+				else:
+					musam.d_gene[j]+=char
 
-	return (musam)
+		return (musam)
 
-P=100
+	P=100
 
-Mutation_Factor=0.1
-Parent_Factor=0.5
+	Mutation_Factor=0.1
+	Parent_Factor=0.5
 
-GEN1=[genesis() for x in range(P)]
+	GEN1=[genesis() for x in range(P)]
 
-for i in range(P):
-	GEN1[i].pheno()
+	for i in range(P):
+		GEN1[i].pheno()
 
-PAR=[]
-GEN2=[]
+	PAR=[]
+	GEN2=[]
 
-n=50
+	n=50
 
-for time in range(n):
+	for time in range(n):
 
 These organism act as the population for the next cycle, but before the next cycle a certain
 percentage of the population is mutated [Mutation Factor].
 
-	for i in range(int(Mutation_Factor*P)):
-		import random
+		for i in range(int(Mutation_Factor*P)):
+			import random
 
-		k=random.randint(0,P-1)
-		GEN1[k]=mutate(GEN1[k])
-		GEN1[k].pheno()
+			k=random.randint(0,P-1)
+			GEN1[k]=mutate(GEN1[k])
+			GEN1[k].pheno()
 
 After this, the fitness of each organism is calculated from their phenotypic traits using a fitness
 function. The organism is then segregated according to their fitness score.
@@ -330,25 +330,25 @@ A certain percentage [Parent Factor] of the fittest population is then allowed t
 taking organisms two at a time. As a result, nCr(P*Parent_Factor,2) organism are born.
 
 
-	health=[fitness(GEN1[i]) for i in range(len(GEN1))]
-	seg=sorted(health)
-	print (seg)
+		health=[fitness(GEN1[i]) for i in range(len(GEN1))]
+		seg=sorted(health)
+		print (seg)
+	
+		c=0
+		for i in range(len(health)):
+				if health[i]<=seg[int(Parent_Factor*P)]:
+				PAR.append(GEN1[i])
+				c+=1
+			if c==int(Parent_Factor*P):
+				break
 
-	c=0
-	for i in range(len(health)):
-		if health[i]<=seg[int(Parent_Factor*P)]:
-			PAR.append(GEN1[i])
-			c+=1
-		if c==int(Parent_Factor*P):
-			break
+		for i in range(len(PAR)):
+			for j in range(i+1,len(PAR)):
+				GEN2.append(schwifty(PAR[i],PAR[j],1)[0])
 
-	for i in range(len(PAR)):
-		for j in range(i+1,len(PAR)):
-			GEN2.append(schwifty(PAR[i],PAR[j],1)[0])
+		for i in range(len(GEN2)):
+			GEN2[i].pheno()
 
-	for i in range(len(GEN2)):
-		GEN2[i].pheno()
-
-	GEN1=GEN2
-	PAR=[]
-	GEN2=[]
+		GEN1=GEN2
+		PAR=[]
+		GEN2=[]
